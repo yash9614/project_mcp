@@ -111,3 +111,7 @@ Password for all: `password123`
 3. Log in as **Akshay** (admin) → issue a certificate, view stats, open Manage Users.
 
 Watch the tool-call traces under each assistant reply — they show exactly which MCP tools were invoked and what they returned.
+
+## Bonus Material
+
+See [CONCEPTS.md](CONCEPTS.md) for the most important concepts and interview-style questions.
