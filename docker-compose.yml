@@ -1,0 +1,27 @@
+services:
+  mcp-server:
+    build: .
+    command: uv run python -m mcp_server.server
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    volumes:
+      - ./database:/app/database
+    restart: unless-stopped
+
+  backend:
+    build: .
+    command: uv run python -m backend.app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - MCP_SERVER_URL=http://mcp-server:8001/mcp
+    depends_on:
+      - mcp-server
+    volumes:
+      - ./database:/app/database
+      - ./frontend:/app/frontend
+    restart: unless-stopped
